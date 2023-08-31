@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 import {Container, Row} from 'reactstrap';
+import { motion } from "framer-motion"
 
 const nav__links =[
   {
@@ -27,7 +28,7 @@ const Header = () => {
       <Row>
         <div className="nav__wrapper">
           <div className="logo">
-            <img src={logo} alt="logo" />
+            <motion.img whileTap={{ scale: 1.2 }} src={logo} alt="logo" />
             <div>
               <h1>Multimart</h1>
             </div>
@@ -44,9 +45,15 @@ const Header = () => {
           </div>
 
           <div className="nav__icons">
-            <span className='fav__icon'><i class="ri-heart-line"></i></span>
-            <span className='cart__icons'><i class="ri-shopping-bag-line"></i></span>
-            <span><img src={userIcon} alt="" /></span>
+            <span className='fav__icon'>
+              <i class="ri-heart-line">
+              </i>
+            <span className="badge">2</span>
+            </span>
+            <span className='fav__icon'><i class="ri-shopping-bag-line"></i>
+            <span className="badge">2</span>
+            </span>
+            <span><motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" /></span>
           </div>
 
           <div className="mobile__menu">

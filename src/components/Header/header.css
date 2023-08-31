@@ -8,6 +8,26 @@
     align-items: center;
     justify-content: space-between;
 }
+.cart__icon, .fav__icon{
+    position: relative;
+}
+.badge{
+    position: absolute;
+    top: 22%;
+    right: -5%;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    content: '';
+    color: #fff;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .7rem;
+    font-weight: 600;
+    z-index: 10;
+}
 .logo{
     display: flex;
     align-items: center;
@@ -40,7 +60,7 @@
     column-gap: 1.2rem;
 }
 .nav__icons span i{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--primary-color);
     cursor: pointer;
 }
