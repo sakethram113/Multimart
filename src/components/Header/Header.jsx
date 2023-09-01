@@ -25,6 +25,7 @@ const nav__links =[
 const Header = () => {
 
   const headerRef = useRef(null)
+  const menuRef = useRef(null)
   const stickyHeaderFunc = ()=>{
     window.addEventListener('scroll',()=>{
       if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 800){
@@ -41,7 +42,7 @@ const Header = () => {
     return ()=>window.removeEventListener('scroll', stickyHeaderFunc)
   })
 
-
+  const menuToggle = ()=> menuRef.current.classList.toggle('active__menu')
   return <header className="header" ref={headerRef}>
     <Container>
       <Row>
@@ -52,12 +53,14 @@ const Header = () => {
               <h1>Multimart</h1>
             </div>
           </div>
-          <div className="navigation">
+          <div className="navigation" ref={menuRef} onClick={menuToggle}>
             <ul className="menu">
              {
               nav__links.map((item,index) =>(
                 <li className="nav__item" key={index}>
-                <NavLink to={item.path} className={(navClass=>navClass.isActive ? 'nav__active' : '')}>{item.display}</NavLink>
+                <NavLink to={item.path} 
+                className={(navClass=>navClass.isActive ? 'nav__active' : '')}>
+                  {item.display}</NavLink>
              </li>
               ))}
             </ul>
@@ -69,14 +72,15 @@ const Header = () => {
               </i>
             <span className="badge">2</span>
             </span>
-            <span className='fav__icon'><i class="ri-shopping-bag-line"></i>
+            <span className='cart__icon'><i class="ri-shopping-bag-line"></i>
             <span className="badge">2</span>
             </span>
             <span><motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" /></span>
-          </div>
-
-          <div className="mobile__menu">
-            <span><i className="ri-menu-line"></i></span>
+            <div className="mobile__menu">
+            <span onClick={menuToggle}>
+              <i className="ri-menu-line"></i>
+            </span>
+          </div>          
           </div>
         </div>
       </Row>
