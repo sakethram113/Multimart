@@ -24,7 +24,7 @@ const Cart = () => {
                   <h2 className='fs-4 text-center'>No items added to the cart</h2>
                 ) : (
                   <table className="table bordered">
-                <thread>
+                <thread className='d-contents'>
                   <tr>
                     <th>Image</th>
                     <th>Title</th>
@@ -52,7 +52,7 @@ const Cart = () => {
                 <span className='fs-4 fw-bold'>${totalAmount}</span>
                 </h6>
               </div>
-              <p className='fs-6 mt-2'>taxes and shipping will calculate at checkout</p>
+              <p className='fs-6 mt-2'>Taxes and Shipping will be calculated at the checkout</p>
               <div>
                 <button className="buy__btn w-100">
                   <Link to='/checkout'>
@@ -91,7 +91,7 @@ const Tr = ({items})=>{
     ${items.price}
   </td>
   <td>{items.quantity}</td>
-  <motion.td whileTap={{scale:1.2}}>
+  <motion.td whileTap={{scale:1.1}}>
     <i onClick={deleteProduct} class="ri-delete-bin-line"></i>
   </motion.td>
 </tr>
