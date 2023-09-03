@@ -24,7 +24,7 @@ const Cart = () => {
                   <h2 className='fs-4 text-center'>No items added to the cart</h2>
                 ) : (
                   <table className="table bordered">
-                <thread className='d-contents'>
+                <thead className='d-contents'>
                   <tr>
                     <th>Image</th>
                     <th>Title</th>
@@ -32,7 +32,7 @@ const Cart = () => {
                     <th>Qty</th>
                     <th>Delete</th>
                   </tr>
-                </thread>
+                </thead>
 
                 <tbody>
                  {
