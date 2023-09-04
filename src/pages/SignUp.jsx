@@ -38,6 +38,8 @@ const SignUp = () => {
         const uploadTask = uploadBytesResumable(storageRef, file)
 
         uploadTask.on(
+          "state_changed",
+          (snapshot) => {},
           (error) => {
             toast.error(error.message);
           },() => {
@@ -47,24 +49,31 @@ const SignUp = () => {
                   displayName: username,
                   photoURL: downloadURL,
                 });
-
+                console.log("different place");
                 // store userdata in firestore database
                 await setDoc(doc(db, 'users', user.uid),{
                   uid: user.uid,
                   displayName: username,
                   email,
                   photoURL: downloadURL
-                });
-              });
-          }
-          );
+                })
+                .then(() => {
+                  console.log("users has been created succesfully");
+              })
+              .catch(() => {
+                console.log("happeden an error");
+          });
+        });
+      }
+    );
           
           setLoading(false);
           toast.success('Account created successfully')
           navigate('/login')
         }catch(error){
           setLoading(false);
-          toast.error('Something went wrong..!!');
+          console.log(error)
+          toast.error(error.message || 'An error occurred during sign-up');
         }
       };
 

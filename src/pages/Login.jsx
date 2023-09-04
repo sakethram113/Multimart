@@ -14,23 +14,25 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
-  const signIn = async(e) => {
-    e.preventDefault()
-    setLoading(true)
-
-    try{
-     const userCredentials = await signInWithEmailAndPassword(auth, email, password)
-
-     const user = userCredentials.user
-     console.log(user)
-     setLoading(false)
-     toast.success('Successfully logged in')
-     navigate('/checkout')
-    }catch(error){
-      setLoading(false)
-      toast.error(error.message)
+  const signIn = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+  
+    try {
+      const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredentials.user;
+  
+      console.log(user);
+      setLoading(false);
+      toast.success('Successfully logged in');
+      navigate("/checkout")
+    } catch (error) {
+      setLoading(false);
+      console.error(error); 
+      toast.error(error.message || 'An error occurred during login');
     }
-  }
+  };
+  
   return (
     <Helmet title='Login'>
       <section>

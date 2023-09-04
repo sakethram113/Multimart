@@ -32,8 +32,8 @@ const Header = () => {
 
   const headerRef = useRef(null)
   const totalQuantity = useSelector(state => state.cart.totalQuantity)
-  const profileActionRef = useRef(null)
-  const menuRef = useRef(null)
+  const profileActionRef = useRef(null);
+  const menuRef = useRef(null);
   const navigate = useNavigate();
   const {currentUser} = useAuth();
   const stickyHeaderFunc = ()=>{
@@ -67,8 +67,16 @@ const Header = () => {
      navigate('/cart')
   }
 
-  const toggleProfileActions = () => profileActionRef.current.classList.toggle('show__profileActions')
-
+  const toggleProfileActions = () => {
+    console.log('Toggle function called');
+    
+    if (profileActionRef.current) {
+      profileActionRef.current.classList.toggle('show__profileActions');
+    }
+    console.log(profileActionRef.current);
+  };
+  
+ 
   return <header className="header" ref={headerRef}>
     <Container>
       <Row>
@@ -102,7 +110,12 @@ const Header = () => {
             <span className="badge">{totalQuantity}</span>
             </span>
             <div className='profile'>
-              <motion.img whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="" onClick={toggleProfileActions}/>
+              <motion.img 
+              whileTap={{ scale: 1.2 }} 
+              src={currentUser ? currentUser.photoURL : userIcon} 
+              alt="" 
+              onClick={toggleProfileActions}
+              />
 
               <div className="profile__actions" ref={profileActionRef} onClick={toggleProfileActions}>
                 {
