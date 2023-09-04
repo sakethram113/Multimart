@@ -35,7 +35,7 @@ const Header = () => {
   const profileActionRef = useRef(null);
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
   const stickyHeaderFunc = ()=>{
     window.addEventListener('scroll',()=>{
       if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 800){
@@ -75,6 +75,7 @@ const Header = () => {
     }
     console.log(profileActionRef.current);
   };
+  
   
  
   return <header className="header" ref={headerRef}>
@@ -117,12 +118,19 @@ const Header = () => {
               onClick={toggleProfileActions}
               />
 
-              <div className="profile__actions" ref={profileActionRef} onClick={toggleProfileActions}>
+              <div 
+              className="profile__actions" 
+              ref={profileActionRef} 
+              onClick={toggleProfileActions}
+              >
                 {
-                  currentUser ? (<span onClick={logout}>Logout</span>) : (
+                  currentUser ? (
+                  <span onClick={logout}>Logout</span>
+                  ) : (
                   <div className='d-flex align-items-center justify-content-center flex-column'>
                     <Link to='/signup'>Signup</Link>
                     <Link to='/login'>Login</Link>
+                    <Link to='/dashboard'>Dashboard</Link>
                   </div>
                 )}
               </div>
@@ -132,7 +140,7 @@ const Header = () => {
               <i className="ri-menu-line"></i>
             </span>
           </div>          
-          </div>
+         </div>
         </div>
       </Row>
     </Container>
